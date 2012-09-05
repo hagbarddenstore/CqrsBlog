@@ -78,8 +78,6 @@
     <Compile Include="Models\Posts\Events.cs" />
     <Compile Include="Models\Posts\Models.cs" />
     <Compile Include="Models\Posts\Post.cs" />
-    <Compile Include="Models\Posts\PostPublisher.cs" />
-    <Compile Include="Models\Posts\PostsQuery.cs" />
     <Compile Include="Models\Posts\PostsRepository.cs" />
     <Compile Include="Models\Posts\Views.cs" />
     <Compile Include="Models\Repository.cs" />
