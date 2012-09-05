@@ -1,0 +1,19 @@
+﻿@model CqrsBlog.ViewModels.Admin.CommentsViewModel
+@{
+    ViewBag.Title = "Comments";
+}
+<h2>Comments</h2>
+<p>The following comments needs to be approved or disapproved.</p>
+<div class="comments">
+@foreach (var comment in Model.Comments)
+{
+    <div class="comment">
+        <p>Written by @comment.Author</p>
+        <p>@comment.Content</p>
+        <p>
+            @Html.RouteLink("Approve", "Admin.ApproveComment", new { postId = comment.PostId, commentId = comment.Id })
+            @Html.RouteLink("Disapprove", "Admin.DisapproveComment", new { postId = comment.PostId, commentId = comment.Id })
+        </p>
+    </div>
+}
+</div>

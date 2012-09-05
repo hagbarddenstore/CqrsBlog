@@ -1,0 +1,41 @@
+﻿@model CqrsBlog.ViewModels.Posts.DisplayPublishedPostViewModel
+@{
+    ViewBag.Title = Model.Post.Content;
+}
+<div class="post">
+    <h2>@Model.Post.Title</h2>
+    <div class="content">@Model.Post.Content</div>
+    <div class="comments">
+        <h3>Comments</h3>
+        @using (Html.BeginRouteForm("Posts.AddCommentToPublishedPost"))
+        {
+            <fieldset>
+                <legend>Add comment</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(x => x.NewComment.Author)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(x => x.NewComment.Author)
+                    @Html.ValidationMessageFor(x => x.NewComment.Author)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(x => x.NewComment.Comment)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(x => x.NewComment.Comment)
+                    @Html.ValidationMessageFor(x => x.NewComment.Comment)
+                </div>
+                <div class="editor-field">
+                    <input type="submit" value="Add comment" />
+                </div>
+            </fieldset>
+        }
+        @foreach (var comment in Model.Post.Comments)
+        {
+            <div class="comment">
+                <p>Written by @comment.Author</p>
+                <p>@comment.Content</p>
+            </div>
+        }
+    </div>
+</div>

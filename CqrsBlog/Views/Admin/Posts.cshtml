@@ -1,0 +1,22 @@
+﻿@model CqrsBlog.ViewModels.Admin.PostsViewModel
+@{
+    ViewBag.Title = "Posts";
+}
+<h2>Posts</h2>
+<p>@Html.RouteLink("Create new post", "Admin.CreatePost")</p>
+@foreach (var post in Model.Posts)
+{
+    <div class="post">
+        <h3>@post.Title</h3>
+        <p>Created on @post.CreatedOn</p>
+        <div class="content">@post.Content</div>
+        @if (post.IsPublished)
+        {
+            <p>@Html.RouteLink("Unpublish", "Admin.UnpublishPost", new { postId = post.Id })</p>
+        }
+        else
+        {
+            <p>@Html.RouteLink("Publish", "Admin.PublishPost", new { postId = post.Id })</p>
+        }
+    </div>
+}

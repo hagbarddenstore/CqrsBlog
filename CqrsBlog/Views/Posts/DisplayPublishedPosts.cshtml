@@ -1,0 +1,14 @@
+﻿@model CqrsBlog.ViewModels.Posts.DisplayPublishedPostsViewModel
+@{
+    ViewBag.Title = "Posts";
+}
+<div id="posts">
+@foreach (var post in Model.Posts)
+{
+    <div class="post">
+        <h3>@post.Title</h3>
+        <div class="content">@post.Content</div>
+        <div>@Html.RouteLink("View more", "Posts.DisplayPublishedPost", new { postId = post.Id })</div>
+    </div>
+}
+</div>
